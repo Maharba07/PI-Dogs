@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import './card.styles.css'
 
-function Card(dog) {
+function Card({dog}) {
 
-  const {name, años_vida, temperaments} = dog
+  const {id, name, años_vida, temperaments} = dog
 
 
   return (

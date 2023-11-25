@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import Card from "../card/card.components";
 import "./cards.styles.css";
 
-function Cards({ allDogs, searchString }) {
+function Cards({allDogs, searchString }) {
   const [orderBy, setOrderBy] = useState({ field: "name", order: "asc" });
   
 
@@ -36,10 +36,6 @@ function Cards({ allDogs, searchString }) {
         <button className="ordenar-nombre" onClick={() => toggleOrder("name")}>
           Sort By Name{" "}
           {orderBy.field === "name" && orderBy.order === "asc" ? "↓" : "↑"}
-        </button>
-        <button className="ordenar-fecha" onClick={() => toggleOrder("dob")}>
-          Sort By Date of Birth{" "}
-          {orderBy.field === "dob" && orderBy.order === "asc" ? "↓" : "↑"}
         </button>
       </div>
       {filteredDogs.map((dog) => (
