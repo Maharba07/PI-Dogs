@@ -33,18 +33,26 @@ const Detail = () => {
         <Link to="/home/">
           <button className="return-button">Return</button>
         </Link>
+        <h2>ID: {dog.id}</h2>
         <h2>Name: {dog.name}</h2>
         {dog.weight && (
           <>
             <h2>Peso: </h2>
-            <h3>Imperial: {dog.weight.imperial} --Lb</h3>
-            <h3>Metrico: {dog.weight.metric} --Kg</h3>
+            <h3>Imperial: {dog.weight.imperial} -- Lb</h3>
+            <h3>Metrico: {dog.weight.metric} -- Kg</h3>
           </>
         )}
-        <h3>Temperament: {dog.temperament}</h3>
+        {dog.height && (
+          <>
+            <h2>Altura: </h2>
+            <h3>Imperial: {dog.height.imperial} -- Pulg</h3>
+            <h3>Metrico: {dog.height.metric} -- CM</h3>
+          </>
+        )}
+        <h3>Temperamentos: {dog.temperament}</h3>
+        <h3>Años de Vida: {dog.life_span}</h3>
         
-          <div>
-            <h3>Image:</h3>
+          <div className="imagen_details">
             <img src={imageUrl} alt="Dog" />
           </div>
        

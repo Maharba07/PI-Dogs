@@ -21,6 +21,7 @@ function Home() {
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getDogByName(searchString));
+    console.log(allDogs);
   }
 
   useEffect(() => {

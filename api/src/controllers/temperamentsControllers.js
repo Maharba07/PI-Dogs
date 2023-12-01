@@ -2,18 +2,18 @@ const axios = require("axios");
 const {Dogs} = require("../db");
 
 const cleanTemperaments = (arr)=>{
-    return arr.map((temperament)=>{
+    return arr.map((temperaments)=>{
     return{
-        temperamentos:temperament.temperament
+        temperamentos:temperaments.temperaments
     };
     });
   };  
 
 const getTemperamentsByName = async()=>{
-    const allTeams = await Dogs.findAll();
+    const allTemperaments = await Dogs.findAll();
   const infoApi = (await axios.get("https://api.thedogapi.com/v1/breeds/"))
     .data;
     const allTemperamentsApi = cleanTemperaments(infoApi)
-    return [...allTeams, ...allTemperamentsApi];
+    return [...allTemperaments, ...allTemperamentsApi];
 }
 module.exports = {getTemperamentsByName};

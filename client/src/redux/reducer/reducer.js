@@ -1,6 +1,6 @@
-import { GET_DOGS, GET_BY_NAME } from "../action/actions";
+import { GET_DOGS, GET_BY_NAME, GET_TEMPERAMENTS  } from "../action/actions";
 
-let initialState = { allDogs: [], dogsCopy: [] };
+let initialState = { allDogs: [], dogsCopy: [], temperaments:[]};
 
 
 function rootReducer(state = initialState, action) {
@@ -17,6 +17,14 @@ function rootReducer(state = initialState, action) {
         allDogs: action.payload,
         dogsCopy: action.payload,
       };
+      case GET_TEMPERAMENTS:
+        return{
+          ...state,
+          temperaments: action.payload
+
+        }
+
+
 
     default:
       return state;

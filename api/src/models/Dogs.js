@@ -14,7 +14,7 @@ module.exports = (sequelize) => {
       imagen: {
         type: DataTypes.STRING,
         defaultValue:
-          "https://www.google.com/url?sa=i&url=https%3A%2F%2Fcolormadehappy.com%2Fweb-stories%2Fdraw-cute-dog-story%2F&psig=AOvVaw0BJQsjHGgg7rcg0KgZRhJg&ust=1700689830602000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKjwj7uJ1oIDFQAAAAAdAAAAABAF",
+          "https://imagizer.imageshack.com/img922/483/YkZczi.jpg",
       },
       name: {
         type: DataTypes.STRING,
@@ -22,15 +22,16 @@ module.exports = (sequelize) => {
       },
       altura: {
         type: DataTypes.FLOAT,
-        //allowNull: false,
+        allowNull: true,
       },
       peso: {
         type: DataTypes.FLOAT,
-        //allowNull: false,
+        allowNull: true,
       },
       años_vida: {
         type: DataTypes.STRING,
-        allowNull: false,
+        defaultValue:"12 años"
+        
       },
     },
     { timestamps: false }
