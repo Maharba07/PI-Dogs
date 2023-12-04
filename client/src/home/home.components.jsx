@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogByName, getDogs } from "../redux/action/actions";
 import { Link } from "react-router-dom";
@@ -11,37 +11,60 @@ function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.allDogs);
   const [searchString, setSearchString] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const dogsPerPage = 8;
 
   function handleChange(e) {
     e.preventDefault();
     setSearchString(e.target.value);
   }
-  //********Filtro con el Backend */
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getDogByName(searchString));
-    console.log(allDogs);
   }
 
   useEffect(() => {
     dispatch(getDogs());
   }, [dispatch]);
-    return (
-      <div className="home-page">
-        <h1>Estas en la Home</h1>
-    <div className="botones-home">
-    <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
+
+  const filteredDogs = searchString
+    ? allDogs.filter((dog) =>
+        dog.name.toLowerCase().includes(searchString.toLowerCase())
+      )
+    : allDogs;
+
+  const indexOfLastDog = currentPage * dogsPerPage;
+  const indexOfFirstDog = indexOfLastDog - dogsPerPage;
+  const currentDogs = filteredDogs.slice(indexOfFirstDog, indexOfLastDog);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  return (
+    <div className="home-page">
+      <h1>Estás en la Home</h1>
+      <div className="botones-home">
+        <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
         <Link to="/">
-            <button className="boton-generico">Salir</button>
+          <button className="boton-generico">Salir</button>
         </Link>
         <Link to="/create">
-            <button className="boton-generico">Crear Perro</button>
+          <button className="boton-generico">Crear Perro</button>
         </Link>
-    </div>
-    <Cards allDogs={allDogs} searchString={searchString} />
       </div>
-    );
-  }
-  
-  export default Home;
+      <Cards allDogs={currentDogs} searchString={searchString} />
+
+      <div className="paginado">
+        {Array.from({
+          length: Math.ceil(filteredDogs.length / dogsPerPage),
+        }).map((item, index) => (
+          <button key={index} onClick={() => paginate(index + 1)}>
+            {index + 1}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default Home;

@@ -4,6 +4,7 @@ import LandingPage from './landing/landing.components';
 import Home from './home/home.components';
 import Detail from './detail/detail.components';
 import Create from './create/create.components';
+import Error404 from './notFound/notFound';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/home" element={<Home/>}/>
         <Route path="/home/:id" element={<Detail/>}/>
         <Route path="/create" element={<Create/>}/>
+        <Route path="/*" element={<Error404/>}/>
       </Routes>
     </div>
   );

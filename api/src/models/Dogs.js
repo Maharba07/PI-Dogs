@@ -11,10 +11,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      imagen: {
+      image: {
         type: DataTypes.STRING,
         defaultValue:
-          "https://imagizer.imageshack.com/img922/483/YkZczi.jpg",
+          "https://imagizer.imageshack.com/img923/3050/Pewblp.png",
       },
       name: {
         type: DataTypes.STRING,
@@ -22,11 +22,11 @@ module.exports = (sequelize) => {
       },
       altura: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        defaultValue:7.5
       },
       peso: {
         type: DataTypes.FLOAT,
-        allowNull: true,
+        defaultValue:2.7
       },
       años_vida: {
         type: DataTypes.STRING,

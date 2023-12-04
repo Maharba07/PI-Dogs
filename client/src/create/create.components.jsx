@@ -19,7 +19,7 @@ const Create = () => {
     imagen: "",
     //altura: "",
     //peso: "",
-    // años_vida: "",
+    años_vida: "",
     temperamento: [],
   };
   const errorInitialState = {
@@ -130,7 +130,7 @@ const Create = () => {
           URL de la Imagen
           <input
             name="imagen"
-            type="url"
+            type="text"
             className="label-form"
             onChange={onTextInputChange}
             value={newName.imagen}

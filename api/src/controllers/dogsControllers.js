@@ -1,8 +1,8 @@
 const axios = require("axios");
 const { Dogs } = require("../db");
-const createDogsDB = async (imagen, name, altura, peso, años_vida) => {
+const createDogsDB = async (image, name, altura, peso, años_vida) => {
   const newDogs = await Dogs.create({
-    imagen,
+    image,
     name,
     altura,
     peso,
@@ -26,7 +26,7 @@ const cleanDogs = (arr) => {
       name: dog.name,
       años_vida:dog.life_span,
       temperamento: dog.temperament,
-      imagen: dog.reference_image_id,
+      image: dog.reference_image_id,
       created: false,
     };
   });
