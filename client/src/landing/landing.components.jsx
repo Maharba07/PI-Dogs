@@ -5,9 +5,9 @@ import './landing.styles.css'
 function LandingPage() {
   return (
     <div className="landing-page">
-      <h1>BIENVENID@S A LA PAGINA QUE TE LLEVERA AL CIELO DE LAS TERNURAS</h1>
+      <h1 className='titulo-landing'>BIENVENID@S A LA PAGINA DE LOS PERRITOS</h1>
       <Link to="/home">
-        <button className="landing-button">LISTO PARA EL CIELO? </button>
+        <button className="landing-button">ADELANTE</button>
       </Link>
     </div>
   );

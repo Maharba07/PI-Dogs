@@ -1,0 +1,45 @@
+.home-page {
+  background-image: url("./Corgi-2.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.boton-paginado {
+  cursor: pointer;
+  text-align: center;
+  margin: 2rem 5px;
+  font-size: 25px;
+  border-radius: 5px;
+  border-color: rgb(16, 5, 90);
+  box-shadow: 0 5px rgba(0, 0, 0, 0.8);
+}
+
+.boton-paginado:hover {
+  background-color: #3487c1;
+  color: white;
+}
+.boton-paginado:active {
+  transform: translateY(4px);
+}
+.boton-generico{
+    cursor: pointer;
+  text-align: center;
+  margin: 1rem 5px 1rem 5rem;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: rgb(16, 5, 90);
+  box-shadow: 0 5px rgba(0, 0, 0, 0.8);
+  
+}
+.boton-generico:hover{
+    background-color:rgb(176 153 66) ;
+    color: white;
+    
+    
+}
+.boton-generico:active{
+    transform:translateY(4px);
+}

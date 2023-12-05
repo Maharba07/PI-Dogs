@@ -111,7 +111,7 @@ const Create = () => {
   }, [newName, inputError]);
 
   return (
-    <div className="container">
+    <div className="create-container">
       <form className="form-container" onSubmit={onSubmitName}>
         <label>
           Nuevo Nombre

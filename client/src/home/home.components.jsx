@@ -58,7 +58,7 @@ function Home() {
         {Array.from({
           length: Math.ceil(filteredDogs.length / dogsPerPage),
         }).map((item, index) => (
-          <button key={index} onClick={() => paginate(index + 1)}>
+          <button className="boton-paginado" key={index} onClick={() => paginate(index + 1)}>
             {index + 1}
           </button>
         ))}

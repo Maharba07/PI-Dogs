@@ -1,0 +1,11 @@
+.cards-list{
+    margin: 0 auto auto 10rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 1rem;
+}
+
+.ordenar-nombre{
+    position: relative;
+    margin: 0 auto;
+}

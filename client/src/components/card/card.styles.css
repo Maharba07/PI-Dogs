@@ -1,0 +1,23 @@
+.card-container{
+    width: 20rem;
+    align-items: center;
+    margin-top: 8%;
+    margin-left: 2%;    
+    background-color: rgba(158, 148, 139, 0.55);
+    border: 5px solid rgba(0,0,0, .8) ;
+    border-radius: 15px;
+    cursor: pointer;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+}
+  
+
+.imagen_perros_home{
+    justify-content: center;
+    width: 15rem;
+    height: 12rem;
+}
+
+.card-container:hover{
+    transform: translateY(-20px);
+}

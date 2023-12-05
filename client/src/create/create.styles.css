@@ -1,0 +1,8 @@
+.create-container {
+  background-image: url("./Corgi-3.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}

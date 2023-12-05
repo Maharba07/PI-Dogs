@@ -2,14 +2,11 @@ import { React, useState } from "react";
 import Card from "../card/card.components";
 import "./cards.styles.css";
 
-function Cards({allDogs, searchString }) {
+function Cards({ allDogs, searchString }) {
   const [orderBy, setOrderBy] = useState({ field: "name", order: "asc" });
-  
 
   const filteredDogs = allDogs.filter((dog) => {
-    return dog.name
-      .toLowerCase()
-      .includes(searchString.toLowerCase());
+    return dog.name.toLowerCase().includes(searchString.toLowerCase());
   });
 
   const toggleOrder = (field) => {
@@ -22,26 +19,25 @@ function Cards({allDogs, searchString }) {
   };
 
   filteredDogs.sort((a, b) => {
-    const fieldA =
-      orderBy.field === "name" ? a.name.toLowerCase() : a.dob;
-    const fieldB =
-      orderBy.field === "name" ? b.name.toLowerCase() : b.dob;
+    const fieldA = orderBy.field === "name" ? a.name.toLowerCase() : a.dob;
+    const fieldB = orderBy.field === "name" ? b.name.toLowerCase() : b.dob;
     const orderFactor = orderBy.order === "asc" ? 1 : -1;
     return fieldA.localeCompare(fieldB) * orderFactor;
   });
 
   return (
-    <div className="cards-list" >
-      <div>
-        <button className="ordenar-nombre" onClick={() => toggleOrder("name")}>
-          Sort By Name{" "}
-          {orderBy.field === "name" && orderBy.order === "asc" ? "↓" : "↑"}
-        </button>
+    <div>
+      <button className="ordenar-nombre" onClick={() => toggleOrder("name")}>
+        Sort By Name{" "}
+        {orderBy.field === "name" && orderBy.order === "asc" ? "↓" : "↑"}
+      </button>
+
+      <div className="cards-list">
+        {filteredDogs.map((dog) => (
+          <Card key={dog.id} dog={dog} />
+        ))}
       </div>
-      {filteredDogs.map((dog) => (
-        <Card key={dog.id} dog={dog} />
-      ))}
-    </div> 
+    </div>
   );
 }
 

@@ -27,6 +27,7 @@ const Detail = () => {
   }, [id]);
 
   return (
+    <div className="container">
     <div className="details">
       <pre>
         <h1>Dog Details:</h1>
@@ -52,11 +53,12 @@ const Detail = () => {
         <h3>Temperamentos: {dog.temperament}</h3>
         <h3>Años de Vida: {dog.life_span}</h3>
         
-          <div className="imagen_details">
-            <img src={imageUrl} alt="Dog" />
+          <div className="imagen_details_container">
+            <img className="imagen_details" src={imageUrl} alt="Dog" />
           </div>
        
       </pre>
+    </div>
     </div>
   );
 };
