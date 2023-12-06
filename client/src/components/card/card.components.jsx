@@ -30,7 +30,7 @@ function Card({ dog }) {
   }, [dog.reference_image_id]);
   return (
     <div className="card-container">
-      <Link to={`/home/${id}`}>
+      <Link className="link-detail" to={`/home/${id}`}>
         <h2>{name}</h2>
         <p>{temperament}</p>
         <h3>

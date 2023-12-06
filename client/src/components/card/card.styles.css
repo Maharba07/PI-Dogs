@@ -3,9 +3,12 @@
     align-items: center;
     margin-top: 8%;
     margin-left: 2%;    
-    background-color: rgba(158, 148, 139, 0.55);
-    border: 5px solid rgba(0,0,0, .8) ;
+    /* background-color: rgba(158, 148, 139, 0.55); */
+    background-color: solid white;
+    border: 5px solid rgba(250, 248, 248, 0.8) ;
     border-radius: 15px;
+    /* box-shadow: 0 5px rgba(0, 0, 0, 0.7); */
+    box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.7);
     cursor: pointer;
     transform: translateZ(0);
     transition: transform 0.25s ease-out;
@@ -13,11 +16,53 @@
   
 
 .imagen_perros_home{
+    border: 5px solid rgba(10, 0, 0, 0.8);
     justify-content: center;
     width: 15rem;
     height: 12rem;
+    border-radius: 8px;
 }
 
 .card-container:hover{
     transform: translateY(-20px);
+}
+.link-detail{
+    text-decoration: none;
+    color: rgb(3, 19, 110);
+    text-shadow: 5px 1px 10px rgb(246, 246, 247);
+    text-align: center;
+    font-weight: bold;
+  
+}
+@media(max-width:1979px){
+    .card-container{  
+        width: auto ; 
+        height: 18rem;
+        padding-bottom: 2rem;
+        margin-left: 1px;
+        margin-bottom: 10px;
+        
+    }
+    .imagen_perros_home{
+        width:9rem;
+        height: 7rem;
+        border-radius: 10px;
+        
+    }
+}
+@media(max-width:768px){
+    .card-container{ 
+        width: auto; 
+        height: auto;
+        padding-bottom: 2rem;
+        margin-left: 1px;
+        margin-bottom: 10px;
+        
+    }
+    .imagen_perros_home{
+        width:7.5rem;
+        height: 5.5rem;
+        border-radius: 10px;
+        
+    }
 }

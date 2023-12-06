@@ -42,7 +42,7 @@ function Home() {
 
   return (
     <div className="home-page">
-      <h1>Estás en la Home</h1>
+      <h1 className="title">WELCOME!</h1>
       <div className="botones-home">
         <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
         <Link to="/">

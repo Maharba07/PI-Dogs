@@ -1,5 +1,6 @@
 .cards-list{
     margin: 0 auto auto 10rem;
+    align-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     column-gap: 1rem;
@@ -7,5 +8,43 @@
 
 .ordenar-nombre{
     position: relative;
-    margin: 0 auto;
+    margin: 2rem auto;
+    width: 10rem;
+    height: auto;
+    background: #f4f6f9;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #4f5e81;
+    cursor: pointer;
+    transition: all ease-in-out 0.3s;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+@media(max-width:1979px){
+    .cards-list{  
+        margin: 0 auto;
+        align-items: center;
+        padding: 2rem 3rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media(max-width:768px){
+    .cards-list{  
+        margin: 0 auto;
+        align-items: center;
+        padding: 2rem 3rem;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width:380px){
+    .cards-list{  
+        margin: 0 auto;
+        align-items: center;
+        padding: 2rem 3rem;
+        grid-template-columns: 1fr;
+    }
 }
