@@ -1,13 +1,15 @@
-.error-page{
-    background-image: url("./Corage.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width:30rem;
-    height: 30rem;
-    margin: 0 auto 2rem;
+.error-page {
+  background-image: url("./Corage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 30rem;
+  height: 30rem;
+  margin: 0 auto 2rem;
 }
 
-.title-error{
-    font-family: 'Arial', sans-serif;
-    text-align: center;
+.title-error {
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  color: rgb(176, 12, 12);
+  text-shadow: 5px 1px 10px rgb(182, 16, 24);
 }

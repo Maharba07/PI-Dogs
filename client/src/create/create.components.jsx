@@ -113,8 +113,9 @@ const Create = () => {
   return (
     <div className="create-container">
       <form className="form-container" onSubmit={onSubmitName}>
-        <label>
-          Nuevo Nombre
+        <label className="form-label">
+          Nuevo Nombre:
+          <br></br>
           <input
             name="name"
             type="text"
@@ -126,8 +127,10 @@ const Create = () => {
             {inputError.name && inputError.name}
           </div>
         </label>
-        <label>
-          URL de la Imagen
+        <br></br>
+        <label className="form-label">
+          URL de la Imagen:
+          <br></br>
           <input
             name="imagen"
             type="text"
@@ -135,9 +138,12 @@ const Create = () => {
             onChange={onTextInputChange}
             value={newName.imagen}
           />
+          <br></br>
         </label>
-        <label>
-          Temperamentos
+        <br></br>
+        <label className="form-label">
+          Temperamentos:
+          <br></br>
           <select
             name="temperamento"
             className="label-form"
