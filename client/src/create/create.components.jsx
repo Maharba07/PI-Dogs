@@ -91,8 +91,7 @@ const Create = () => {
     event.preventDefault();
     console.log("Datos a insertar:", newName);
     if (!newName.name) {
-      alert.error("Todos los campos requeridos deben ser completados.");
-      return;
+      return alert("Todos los campos requeridos deben ser completados.");
     }
     try {
      const response = await axios.post("http://localhost:3001/dogs/", newName);
@@ -146,7 +145,7 @@ const Create = () => {
           <br></br>
           <select
             name="temperamento"
-            className="label-form"
+            className="label-temperamento"
             onChange={onTemperamentSelectChange}
           >
             {temperamento &&
@@ -181,10 +180,10 @@ const Create = () => {
             })}
         </div>
         <input className="boton-submit" type="submit" disabled={disabled} />
-      </form>
       <Link to="/home/">
         <button className="return-button">Return</button>
       </Link>
+      </form>
     </div>
   );
 };

@@ -1,4 +1,7 @@
 .create-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url("./Corgi-3.gif");
   background-repeat: no-repeat;
   background-size: cover;
@@ -7,100 +10,146 @@
   overflow: hidden;
 }
 
-.create-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
-
-.form-container{
-  border: 5px solid rgba(26,71, 95, 0.8);
+.form-container {
+  border: 5px solid rgba(26, 71, 95, 0.8);
   box-shadow: 0 7px 5px 10px rgba(0, 0, 0, 0.7);
   background-color: rgba(158, 148, 139, 0.7);
   margin: auto;
   max-width: 75%;
   min-height: 650px;
   padding: 2rem;
-  text-align: left; 
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-
+  text-align: left;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-.form-label{
+.form-label {
   position: relative;
   top: -10px;
   left: 10px;
   font-weight: bold;
   font-size: 20px;
-  color:rgb(240, 239, 236);
+  color: rgb(240, 239, 236);
   text-shadow: 5px 1px 10px rgb(1, 7, 13);
   text-shadow: 10px 5px 20px rgb(30, 6, 212);
-  
 }
-.label-form{
-  font-family:'Courier New', Courier, monospace, sans-serif;
+.label-form {
+  width: 40%;
+  font-family: "Courier New", Courier, monospace, sans-serif;
   font-size: 16px;
   color: #080809;
   text-align: left;
   margin-bottom: 1rem;
 }
-.temperamentos-agregados{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.label-temperamento {
+  width: 100%;
+  font-family: "Courier New", Courier, monospace, sans-serif;
+  font-size: 16px;
+  color: #080809;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.temperamentos-agregados {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 18px;
   color: white;
   text-align: left;
   margin-top: 1rem;
-  border: 3px solid rgba(243, 8, 8, 0.5) ;
+  border: 3px solid rgba(243, 8, 8, 0.5);
   border-radius: 5px;
-  padding: .5rem;
+  padding: 0.5rem;
   margin: 5px;
   background-color: rgba(0, 0, 0, 0.8);
   cursor: pointer;
-
 }
-.errorMessage{
-  font-family:'Courier New', Courier, monospace, sans-serif;
+.errorMessage {
+  font-family: "Courier New", Courier, monospace, sans-serif;
   font-size: 16px;
-  color:rgb(150, 50, 50);
+  font-weight: bold;
+  color: rgb(150, 50, 50);
   text-shadow: 10px 5px 20px rgb(207, 4, 248);
   text-align: left;
-  margin-top: .5rem;
-
+  margin-top: 0.5rem;
 }
-.boton-submit{
-  position: relative;
-  top: 20rem;
-  width: 100%;
+.boton-submit {
+  position: absolute;
+  top: 60rem;
+  width: 20%;
   height: 50px;
-  background-image: linear-gradient(to bottom right,rgba(97, 115, 150, 0.8) ,rgba(191, 213, 248, 0.8) );
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(97, 115, 150, 0.8),
+    rgba(191, 213, 248, 0.8)
+  );
   border: none;
-  outline:none;
+  outline: none;
   cursor: pointer;
   transition: all ease-in-out 0.3s;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
-  color:#fff;
-  box-shadow: 0px 10px 20px rgba(150, 50, 50,0.2);
-
+  color: #fff;
+  box-shadow: 0px 10px 20px rgba(150, 50, 50, 0.2);
 }
-.boton-submit:hover{
+
+.return-button {
+  position: relative;
+  width: 20%;
+  height: 50px;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(33, 59, 110, 0.8),
+    rgba(93, 152, 247, 0.8)
+  );
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+  box-shadow: 0px 10px 20px rgba(150, 50, 50, 0.2);
+}
+
+.return-button:active {
   transform: translateY(4px);
 }
-.return-button{
-  position: relative;
-  top: -20rem;
-  right: 20rem;
-  width: 100%;
-  height: 50px;
-  background-image: linear-gradient(to bottom right,rgba(33, 59, 110, 0.8) ,rgba(93, 152, 247, 0.8) );
-  border: none;
-  outline:none;
-  cursor: pointer;
-  transition: all ease-in-out 0.3s;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color:goldenrod;
-  box-shadow: 0px 10px 20px rgba(150, 50, 50,0.2);
+
+@media (max-width: 1980px) {
+  .create-container {
+    padding: 0%;
+  }
+  .boton-submit {
+    top: 48rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-container {
+    width: 48rem;
+    height: 39rem;
+    padding-bottom: 15rem;
+    padding-top: 10rem;
+  }
+}
+@media (max-width: 390px) {
+  .create-container {
+    width: 23.5rem;
+    height: 28rem;
+  }
+  .form-container {
+    margin-top: -5rem;
+  }
+
+  .boton-submit {
+    top: 45rem;
+    width: auto;
+  }
+
+  .return-button {
+    width: auto;
+  }
 }

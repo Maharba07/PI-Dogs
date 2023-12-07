@@ -41,7 +41,7 @@ const getAllDogs = async () => {
 };
 
 const getDogsByName = async (name) => {
-  const infoApi = (await axios.get("https://api.thedogapi.com/v1/breeds/")).data;
+  const infoApi = (await axios.get(`https://api.thedogapi.com/v1/breeds/${name}/`)).data;
   const allDogssApi = cleanDogs(infoApi);
   const dogssFilter = allDogssApi.filter(dogs => dogs.name === name);
   const dogsDb = await Dogs.findAll({ where: { name:name } });
