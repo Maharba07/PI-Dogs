@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { getTemperaments } from "../redux/action/actions";
+//import axios from "axios";
+import { getTemperaments, createDogsDB, getCreated} from "../redux/action/actions";
 import "./create.styles.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -19,7 +19,7 @@ const Create = () => {
     imagen: "",
     //altura: "",
     //peso: "",
-    años_vida: "",
+    //años_vida: "",
     temperamento: [],
   };
   const errorInitialState = {
@@ -89,20 +89,22 @@ const Create = () => {
   };
   const onSubmitName = async (event) => {
     event.preventDefault();
-    console.log("Datos a insertar:", newName);
     if (!newName.name) {
       return alert("Todos los campos requeridos deben ser completados.");
     }
     try {
-     const response = await axios.post("http://localhost:3001/dogs/", newName);
-      console.log("Respuesta de la solicitud:", response.data);
+      const createdDog = await dispatch(createDogsDB(newName));
+      console.log("Created Dog:", createdDog);
       setNewName(formInitialState);
       setInputError(errorInitialState);
+      dispatch(getCreated()); // Fetch the updated list of dogs
       navigate("/home");
     } catch (error) {
       console.error("Error al enviar la solicitud:", error.response);
     }
   };
+  
+  
 
   useEffect(() => {
     console.log("UseEffect:", inputError);
@@ -180,9 +182,9 @@ const Create = () => {
             })}
         </div>
         <input className="boton-submit" type="submit" disabled={disabled} />
-      <Link to="/home/">
-        <button className="return-button">Return</button>
-      </Link>
+        <Link to="/home/">
+          <button className="return-button">Return</button>
+        </Link>
       </form>
     </div>
   );

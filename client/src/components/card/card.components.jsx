@@ -8,8 +8,7 @@ function Card({ dog }) {
     id,
     name,
     temperament,
-    weight: { imperial },
-    weight: { metric },
+    weight,
   } = dog;
 
   useEffect(() => {
@@ -33,9 +32,11 @@ function Card({ dog }) {
       <Link className="link-detail" to={`/home/${id}`}>
         <h2>{name}</h2>
         <p>{temperament}</p>
-        <h3>
-          {imperial}Lb ({metric}Kg)
+        {weight && (
+          <h3>
+            {weight.imperial}Lb ({weight.metric}Kg)
         </h3>
+        )}
         <img className="imagen_perros_home" src={imageUrl} alt="Dog" />
       </Link>
     </div>

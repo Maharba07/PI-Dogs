@@ -11,11 +11,33 @@
   align-items: center;
   margin: auto;
   background-color: rgba(158, 148, 139, 0.55);
-  border: 5px solid rgba(0, 0, 0, 0.8);
+  border: 5px solid rgba(2, 46, 70, 0.8);
   border-radius: 15px;
+  color: rgb(10, 10, 10);
 }
 
 .imagen_details {
+  border: 5px solid rgba(0, 0, 0, 0.8);
+  border-radius: 8px;
   height: 27rem;
   width: 30rem;
+}
+
+@media (max-width: 390px) {
+  .details {
+    flex-direction: column;
+    width: auto;
+    height: auto;
+  }
+  .imagen_details {
+    height: 12rem;
+    width: 15rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .imagen_details {
+    height: 9rem;
+    width: 12rem;
+  }
 }

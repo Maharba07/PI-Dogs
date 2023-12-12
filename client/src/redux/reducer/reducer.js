@@ -1,7 +1,12 @@
-import { GET_DOGS, GET_BY_NAME, GET_TEMPERAMENTS  } from "../action/actions";
+import {
+  GET_DOGS,
+  GET_BY_NAME,
+  GET_TEMPERAMENTS,
+  CREATE_DOG,
+  GET_CREATED,
+} from "../action/actions";
 
-let initialState = { allDogs: [], dogsCopy: [], temperaments:[]};
-
+let initialState = { allDogs: [], dogsCopy: [], temperaments: [], createdDog:[], };
 
 function rootReducer(state = initialState, action) {
   switch (action.type) {
@@ -17,14 +22,32 @@ function rootReducer(state = initialState, action) {
         allDogs: action.payload,
         dogsCopy: action.payload,
       };
-      case GET_TEMPERAMENTS:
-        return{
+    case GET_TEMPERAMENTS:
+      return {
+        ...state,
+        temperaments: action.payload,
+      };
+    case CREATE_DOG:
+      if (action.payload) {
+        const newDog = action.payload;
+        console.log("New dog added to state:", newDog);
+        return {
           ...state,
-          temperaments: action.payload
+          allDogs: [...state.allDogs, newDog],
+          createdDog: [...state.createdDog, newDog],
+        };
+      } else {
+        return {
+          ...state,
+          errorMessage: "Error Creating Dog",
+        };
+      }
 
-        }
-
-
+      case GET_CREATED:
+       return{
+        ...state,
+        createdDog: action.payload,
+       }
 
     default:
       return state;
