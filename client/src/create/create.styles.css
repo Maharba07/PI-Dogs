@@ -7,7 +7,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  
 }
 
 .form-container {
@@ -66,17 +66,14 @@
   cursor: pointer;
 }
 .errorMessage {
-  font-family: "Courier New", Courier, monospace, sans-serif;
   font-size: 16px;
   font-weight: bold;
   color: rgb(150, 50, 50);
-  text-shadow: 10px 5px 20px rgb(207, 4, 248);
-  text-align: left;
+  text-shadow: 2px 2px 4px rgba(207, 4, 248, 0.5);
   margin-top: 0.5rem;
 }
 .boton-submit {
-  position: absolute;
-  top: 60rem;
+  position: relative;
   width: 20%;
   height: 50px;
   background-image: linear-gradient(
@@ -98,6 +95,7 @@
 .return-button {
   position: relative;
   width: 20%;
+  left: 50rem;
   height: 50px;
   background-image: linear-gradient(
     to bottom right,
@@ -113,43 +111,38 @@
   color: white;
   box-shadow: 0px 10px 20px rgba(150, 50, 50, 0.2);
 }
-
+.boton-submit:active{
+  transform: translateY(4px);
+}
 .return-button:active {
   transform: translateY(4px);
 }
 
-@media (max-width: 1980px) {
-  .create-container {
-    padding: 0%;
-  }
-  .boton-submit {
-    top: 48rem;
-  }
-}
-
 @media (max-width: 768px) {
   .create-container {
-    width: 48rem;
-    height: 39rem;
+    width: 100%;
+    height: 100%;
     padding-bottom: 15rem;
     padding-top: 10rem;
+  }
+  .return-button{
+  left: 18rem;
+
   }
 }
 @media (max-width: 390px) {
   .create-container {
-    width: 23.5rem;
-    height: 28rem;
+    width: 100%;
+    height: 100%;
   }
   .form-container {
     margin-top: -5rem;
   }
-
-  .boton-submit {
-    top: 45rem;
-    width: auto;
+  .boton-submit{
+    width: 100%;
   }
-
-  .return-button {
-    width: auto;
-  }
+.return-button{
+  width: 100%;
+  left: auto;
+}
 }

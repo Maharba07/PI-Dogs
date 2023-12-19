@@ -32,7 +32,7 @@ const Detail = () => {
       <pre>
         <h1>Dog Details:</h1>
         <Link to="/home/">
-          <button className="return-button">Return</button>
+          <button className="return-detail">Return</button>
         </Link>
         <h2>ID: {dog.id}</h2>
         <h2>Name: {dog.name}</h2>

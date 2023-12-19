@@ -3,7 +3,7 @@ import {
   GET_BY_NAME,
   GET_TEMPERAMENTS,
   CREATE_DOG,
-  GET_CREATED,
+  // GET_CREATED,
 } from "../action/actions";
 
 let initialState = { allDogs: [], dogsCopy: [], temperaments: [], createdDog:[], };
@@ -43,11 +43,11 @@ function rootReducer(state = initialState, action) {
         };
       }
 
-      case GET_CREATED:
-       return{
-        ...state,
-        createdDog: action.payload,
-       }
+  //     case GET_CREATED:
+  // return {
+  //   ...state,
+  //   createdDog: [...state.createdDog, ...action.payload],
+  // };
 
     default:
       return state;

@@ -4,7 +4,7 @@ export const GET_DOGS = "GET_DOGS";
 export const GET_BY_NAME = "GET_BY_NAME";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
 export const CREATE_DOG = "CREATE_DOG";
-export const GET_CREATED = "GET_CREATED";
+// export const GET_CREATED = "GET_CREATED";
 
 export function getDogs() {
   return async function (dispatch) {
@@ -44,10 +44,10 @@ export function createDogsDB(newName) {
 }
 
 
-export function getCreated() {
-  return async function (dispatch) {
-    const response = await axios.get("http://localhost:3001/dogs/");
-    return dispatch({ type: "GET_CREATED", payload: response.data });
-  };
-}
+// export function getCreated() {
+//   return async function (dispatch) {
+//     const response = await axios.get("http://localhost:3001/dogs/");
+//     return dispatch({ type: "GET_CREATED", payload: response.data });
+//   };
+// }
 

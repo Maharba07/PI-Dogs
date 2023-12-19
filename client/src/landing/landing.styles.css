@@ -8,28 +8,51 @@
 }
 
 .titulo-landing{
-  position: absolute;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 0px;
   font-size: 70px;
-  color: rgba(0,0,0, 0.9);
-  text-shadow: 5px 1px 10px rgba(4, 99, 37, 0.6);
-  font-family: fantasy;
-  position: relative;
+  font-weight: 700;
+  z-index: 100;
+  color: rgba(2, 6, 7, 0.8);
+  text-shadow: 5px 1px 10px rgba(255, 255, 255, 0.6);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  
+}
+.titulo-landing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: -1;
 }
 
 .landing-button{
-  border-radius: 5px;
-  font-size: 20px;
-  font-style: oblique;
-  font-weight: bold;
-  border-color: rgb(1, 19, 19);
-  box-shadow: 0 5px rgba(0, 0, 0, 0.8);
+  padding: 10px 30px;
+  position: relative;
+  margin-top: 10px;
+  border: none;
   cursor: pointer;
-}
+  outline: none;
+  font-family: "Arial", sans-serif;
+  font-size: 40px;
+  color: #fff;
+  background-color: rgb(9, 123, 156);
+  box-shadow: 0 0 10px rgba(9, 123, 156, 0.
+  4), inset 0 0 10px rgba(9, 123, 156, 0.
+  8);
+  transition: all 0.5s ease;
+  }
 
 .landing-button:hover {
-  color: rgba(142, 72, 5, 0.8);
-  background-color: rgba(191, 213, 248, 0.8); 
+  transform: scale(1.1);
+
 }
 
 .landing-button:active{

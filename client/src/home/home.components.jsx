@@ -10,6 +10,7 @@ import "./home.styles.css";
 function Home() {
   const dispatch = useDispatch();
   const allDogs = useSelector((state) => state.allDogs);
+  const created = useSelector((state) => state.createdDog);
   const [searchString, setSearchString] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
@@ -28,36 +29,33 @@ function Home() {
     dispatch(getDogs());
   }, [dispatch]);
 
-  const filteredDogs = searchString
-    ? allDogs.filter((dog) =>
-        dog.name.toLowerCase().includes(searchString.toLowerCase())
-      )
-    : allDogs;
+  const dogsToDisplay = searchString ? created.filter((dog) =>
+    dog.name.toLowerCase().includes(searchString.toLowerCase())
+) : [...allDogs, ...created];
 
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-  const currentDogs = filteredDogs.slice(indexOfFirstDog, indexOfLastDog);
+  const currentDogs = dogsToDisplay.slice(indexOfFirstDog, indexOfLastDog);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="home-page">
       <h1 className="title">WELCOME!</h1>
-
-      <div className="botones-home">
-        <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
-        <Link to="/">
-          <button className="boton-generico">Salir</button>
+      <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
+      <div className="botones">
+        <Link to="/" className="boton-salir">
+          Salir
         </Link>
-        <Link to="/create">
-          <button className="boton-generico">Crear Perro</button>
+        <Link to="/create" className="boton-crearPerro">
+          Crear Perro
         </Link>
       </div>
       <Cards allDogs={currentDogs} searchString={searchString} />
 
       <div className="paginado">
         {Array.from({
-          length: Math.ceil(filteredDogs.length / dogsPerPage),
+          length: Math.ceil(dogsToDisplay.length / dogsPerPage),
         }).map((item, index) => (
           <button
             className="boton-paginado"

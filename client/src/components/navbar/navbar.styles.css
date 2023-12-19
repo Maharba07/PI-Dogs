@@ -1,18 +1,17 @@
 .search-box {
-    /* -webkit-appearance: searchfield; */
     position: relative;
     text-align: center;
     justify-self: center;
     align-items: center;
-    margin:0 auto;
-    margin-bottom: 1rem;
-    width: 55px;
+    margin:0 auto 2rem;
+    width: 100px;
     height: auto;
     background: #eeeeee;
     border-radius: 8px;
     padding: 10px 20px;
     box-shadow: 0 5px rgba(0, 0, 0, 0.7);
     transition: 0.5s ease;
+    z-index: 999;
   }
   
   .search-box:hover {

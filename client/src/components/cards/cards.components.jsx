@@ -19,22 +19,34 @@ function Cards({ allDogs, searchString }) {
   };
 
   filteredDogs.sort((a, b) => {
-    const fieldA = orderBy.field === "name" ? a.name.toLowerCase() : a.dob;
-    const fieldB = orderBy.field === "name" ? b.name.toLowerCase() : b.dob;
+    let fieldA, fieldB;
+
+    if (orderBy.field === "name") {
+      fieldA = a.name.toLowerCase();
+      fieldB = b.name.toLowerCase();
+    } else if (orderBy.field === "weight") {
+      fieldA = parseInt(a.weight.metric.split(" - ")[0]);
+      fieldB = parseInt(b.weight.metric.split(" - ")[0]);
+    }
+
     const orderFactor = orderBy.order === "asc" ? 1 : -1;
-    return fieldA.localeCompare(fieldB) * orderFactor;
+    return fieldA < fieldB ? -1 * orderFactor : fieldA > fieldB ? 1 * orderFactor : 0;
   });
 
   return (
     <div>
-      <button className="ordenar-nombre" onClick={() => toggleOrder("name")}>
+      <button className="ordenar" onClick={() => toggleOrder("name")}>
         Sort By Name{" "}
         {orderBy.field === "name" && orderBy.order === "asc" ? "↓" : "↑"}
+      </button>
+      <button className="ordenar" onClick={() => toggleOrder("weight")}>
+        Sort By Weight{" "}
+        {orderBy.field === "weight" && orderBy.order === "asc" ? "↓" : "↑"}
       </button>
 
       <div className="cards-list">
         {filteredDogs.map((dog) => (
-          <Card key={dog.id} dog={dog} />
+          <Card key={dog.id} dog={dog} imagen={dog.image} />
         ))}
       </div>
     </div>

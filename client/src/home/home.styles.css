@@ -1,3 +1,9 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 .home-page {
   background-image: url("./Corgi-2.gif");
   background-repeat: no-repeat;
@@ -6,18 +12,76 @@
   height: 100vh;
   overflow: hidden;
 }
-.title{
-  color: rgb(240, 233, 198);
-  text-shadow: 5px 1px 10px rgb(16, 102, 182);
-  text-align: center;
-  font-weight: bold;
-  font-size: 4em;
-  background-color: rgba(188, 186, 184,0.8);
-  padding-top: 1%;
-  margin-top: 0%;
-  cursor: pointer;
-  text-decoration:underline
+.title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.3rem 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 520;
+}
+.title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: -1;
+}
 
+.boton-salir {
+  position: absolute;
+  z-index: 100;
+  font-size: 1.15rem;
+  transition: all 0.5s ease-in-out;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid transparent;
+  margin: 10rem;
+  box-shadow: 0 8px 16px 0 rgb(70 70 70 / 2);
+  right: 55rem;
+  top: -6.7rem;
+}
+
+.boton-salir:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 48px 0 rgb(70 70 70 /2);
+  text-decoration-line: underline;
+  color: orange;
+}
+
+.boton-crearPerro {
+  position: absolute;
+  z-index: 100;
+  font-size: 1.15rem;
+  transition: all 0.5s ease-in-out;
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  border: 2px solid transparent;
+  margin: 10rem;
+  box-shadow: 0 8px 16px 0 rgb(70 70 70 / 2);
+  left: 55rem;
+  top: -6.7rem;
+  
+}
+
+.boton-crearPerro:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 48px 0 rgb(70 70 70 /2);
+  text-decoration-line: underline;
+  color: orange;
 }
 
 .boton-paginado {
@@ -25,48 +89,78 @@
   text-align: center;
   margin: 2rem 5px;
   font-size: 25px;
+  padding: 0.5rem;
   border-radius: 5px;
-  border-color: rgb(16, 5, 90);
+  border-color: rgb(250, 250, 250);
   box-shadow: 0 5px rgba(0, 0, 0, 0.8);
 }
 
 .boton-paginado:hover {
-  background-color: #3487c1;
-  color: white;
+  background-color: #053c63;
+  color: orange;
 }
 .boton-paginado:active {
   transform: translateY(4px);
 }
-.boton-generico{
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 5px;
-  border-color: rgb(16, 5, 90);
-  box-shadow: 0 5px rgba(0, 0, 0, 0.8);
-  
-}
-.boton-generico:hover{
-    background-color:rgb(176 153 66) ;
-    color: white;
-}
-.boton-generico:active{
-    transform:translateY(4px);
-}
 
-@media(max-width:1979px){
-  .home-page{
+@media (max-width: 1980px) {
+  .home-page {
     height: 100vh;
     width: 100vw;
-    overflow:scroll
-  
+    overflow: scroll;
   }
-  .boton-generico{
-  position: relative;
-  font-size: 15px;
-  align-items: center;
-  justify-content: center;
-
+  .boton-salir {
+    position: absolute;
+    font-size: 15px;
+    margin-top: 0%;
+    top: 3.5rem;
+    right: 40rem;
+    
+  }
+  .boton-crearPerro {
+    position: absolute;
+    font-size: 15px;
+    margin-top: 0%;
+    top: 3.5rem;
+    left: 40rem;
+  }
 }
+@media (max-width:768px ) {
+  .home-page {
+    align-items: center;
+    justify-content: space-around;
+    }
+    .boton-crearPerro{
+      position: absolute;
+      margin-bottom: 2rem;
+      top: 3rem;
+      left: 5rem;
+      
+    }
+    .boton-salir{
+      position: absolute;
+      align-self: center;
+      left: 20rem;
+      top: 3rem;
+    
+    }
+}
+@media (max-width: 390px ) {
+.title{
+  margin-top: 3rem;
+}
+    .boton-crearPerro{
+      position: absolute;
+      margin-bottom: 2rem;
+      top: 5rem;
+      left: 5rem;
+      
+    }
+    .boton-salir{
+      position: absolute;
+      align-self: center;
+      left: 2rem;
+      top: 5rem;
+    
+    }
 }

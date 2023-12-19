@@ -22,16 +22,12 @@ module.exports = (sequelize) => {
       },
       altura: {
         type: DataTypes.FLOAT,
-        defaultValue:7.5
       },
       peso: {
         type: DataTypes.FLOAT,
-        defaultValue:2.7
       },
       años_vida: {
         type: DataTypes.STRING,
-        defaultValue:"12 años"
-        
       },
     },
     { timestamps: false }

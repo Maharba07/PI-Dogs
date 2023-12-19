@@ -13,16 +13,19 @@ function Card({ dog }) {
 
   useEffect(() => {
     const fetchData = () => {
-      fetch(`https://api.thedogapi.com/v1/images/${dog.reference_image_id}`)
-        .then((response) => {
-          return response.json();
-        })
-        .then((imageData) => {
-          setImageUrl(imageData.url);
-        })
-        .catch((error) => {
-          console.error("Error fetching image:", error.message);
-        });
+      
+      if (dog.reference_image_id) {
+        fetch(`https://api.thedogapi.com/v1/images/${dog.reference_image_id}`)
+          .then((response) => {
+            return response.json();
+          })
+          .then((imageData) => {
+            setImageUrl(imageData.url);
+          })
+          .catch((error) => {
+            console.error("Error fetching image:", error.message);
+          });
+      }
     };
 
     fetchData();
@@ -37,7 +40,7 @@ function Card({ dog }) {
             {weight.imperial}Lb ({weight.metric}Kg)
         </h3>
         )}
-        <img className="imagen_perros_home" src={imageUrl} alt="Dog" />
+        <img className="imagen_perros_home" src={imageUrl || "https://imagizer.imageshack.com/img923/3050/Pewblp.png"} alt="Dog" onError={(e) => console.error("Error loading image:", e)}/>
       </Link>
     </div>
   );
