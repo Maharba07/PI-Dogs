@@ -22,12 +22,15 @@ module.exports = (sequelize) => {
       },
       altura: {
         type: DataTypes.FLOAT,
+        validate:{min:5, max:45 }
       },
       peso: {
         type: DataTypes.FLOAT,
+        validate:{min:1, max:200 }
       },
       años_vida: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
+        validate:{min:8, max:20 }
       },
     },
     { timestamps: false }

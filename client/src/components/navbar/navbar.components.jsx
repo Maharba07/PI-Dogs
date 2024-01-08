@@ -1,11 +1,15 @@
 import "./navbar.styles.css";
 
-function Navbar({ handleChange}) {
+function Navbar({ handleChange }) {
   return (
     <div className="search-box">
-      <form onChange={handleChange}>
-        <input className="search-bar" placeholder="Search" type="search" />
-        
+      <form>
+        <input
+          className="search-bar"
+          placeholder="Search"
+          type="search"
+          onChange={handleChange}
+        />
       </form>
     </div>
   );

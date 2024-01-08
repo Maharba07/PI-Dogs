@@ -14,6 +14,7 @@ function Home() {
   const [searchString, setSearchString] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const dogsPerPage = 8;
+  const visiblePages = 5;
 
   function handleChange(e) {
     e.preventDefault();
@@ -29,15 +30,73 @@ function Home() {
     dispatch(getDogs());
   }, [dispatch]);
 
-  const dogsToDisplay = searchString ? created.filter((dog) =>
-    dog.name.toLowerCase().includes(searchString.toLowerCase())
-) : [...allDogs, ...created];
+  const dogsToDisplay = searchString
+    ? [
+        ...created.filter((dog) =>
+          dog.name.toLowerCase().includes(searchString.toLowerCase())
+        ),
+        ...allDogs.filter((dog) =>
+          dog.name.toLowerCase().includes(searchString.toLowerCase())
+        ),
+      ]
+    : [...allDogs, ...created];
 
   const indexOfLastDog = currentPage * dogsPerPage;
   const indexOfFirstDog = indexOfLastDog - dogsPerPage;
   const currentDogs = dogsToDisplay.slice(indexOfFirstDog, indexOfLastDog);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const renderPagination = () => {
+    const totalPages = Math.ceil(dogsToDisplay.length / dogsPerPage);
+    const pages = [];
+
+    if (totalPages <= visiblePages) {
+      // Si hay menos o igual a 5 páginas, mostrar todos los botones
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(
+          <button
+            className={`boton-paginado ${currentPage === i ? "active" : ""}`}
+            key={i}
+            onClick={() => paginate(i)}
+          >
+            {i}
+          </button>
+        );
+      }
+    } else {
+      // Si hay más de 5 páginas, manejar la lógica de puntos suspensivos
+      const leftBound = Math.max(1, currentPage - Math.floor(visiblePages / 2));
+      const rightBound = Math.min(
+        totalPages,
+        leftBound + visiblePages - 1
+      );
+
+      if (leftBound > 1) {
+        // Agregar puntos suspensivos si la primera página no es visible
+        pages.push(<span key="ellipsis-start">...</span>);
+      }
+
+      for (let i = leftBound; i <= rightBound; i++) {
+        pages.push(
+          <button
+            className={`boton-paginado ${currentPage === i ? "active" : ""}`}
+            key={i}
+            onClick={() => paginate(i)}
+          >
+            {i}
+          </button>
+        );
+      }
+
+      if (rightBound < totalPages) {
+        // Agregar puntos suspensivos si la última página no es visible
+        pages.push(<span key="ellipsis-end">...</span>);
+      }
+    }
+
+    return pages;
+  };
 
   return (
     <div className="home-page">
@@ -54,17 +113,23 @@ function Home() {
       <Cards allDogs={currentDogs} searchString={searchString} />
 
       <div className="paginado">
-        {Array.from({
-          length: Math.ceil(dogsToDisplay.length / dogsPerPage),
-        }).map((item, index) => (
+        {currentPage > 1 && (
           <button
             className="boton-paginado"
-            key={index}
-            onClick={() => paginate(index + 1)}
+            onClick={() => paginate(currentPage - 1)}
           >
-            {index + 1}
+            Prev
           </button>
-        ))}
+        )}
+        {renderPagination()}
+        {currentPage < Math.ceil(dogsToDisplay.length / dogsPerPage) && (
+          <button
+            className="boton-paginado"
+            onClick={() => paginate(currentPage + 1)}
+          >
+            Next
+          </button>
+        )}
       </div>
     </div>
   );

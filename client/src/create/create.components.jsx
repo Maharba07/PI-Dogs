@@ -23,9 +23,12 @@ const Create = () => {
   const formInitialState = {
     name: "",
     image: "",
-    altura: "",
-    peso: "",
-    años_vida: "",
+    alturaMin: "",
+    alturaMax: "",
+    pesoMin: "",
+    pesoMax: "",
+    años_vidaMin: "",
+    años_vidaMax: "",
     temperamento: [],
   };
 
@@ -62,6 +65,128 @@ const Create = () => {
       ...newName,
       [name]: value,
     });
+  };
+
+  const onHeightInputChange = (event) => {
+    const { name, value } = event.target;
+    let errorMessage = "";
+
+    setNewName({
+      ...newName,
+      [name]: value,
+    });
+
+    // Validación después de que ambos campos estén llenos
+    if (name === "alturaMin" && newName.alturaMax !== "") {
+      const minValue = parseFloat(value);
+      const maxValue = parseFloat(newName.alturaMax);
+
+      if (minValue >= maxValue) {
+        errorMessage =
+          "La altura mínima no puede ser mayor o igual a la altura máxima.";
+      } else if (minValue < 5) {
+        errorMessage = "La altura mínima no puede ser menor a 5.";
+      } else if (maxValue > 45) {
+        errorMessage = "La altura máxima no puede ser mayor a 45.";
+      }
+    } else if (name === "alturaMax" && newName.alturaMin !== "") {
+      const minValue = parseFloat(newName.alturaMin);
+      const maxValue = parseFloat(value);
+
+      if (minValue >= maxValue) {
+        errorMessage =
+          "La altura máxima no puede ser menor o igual a la altura mínima.";
+      } else if (minValue < 5) {
+        errorMessage = "La altura mínima no puede ser menor a 5.";
+      } else if (maxValue > 45) {
+        errorMessage = "La altura máxima no puede ser mayor a 45.";
+      }
+    }
+
+    setInputError((prevInputError) => ({
+      ...prevInputError,
+      altura: errorMessage,
+    }));
+  };
+
+  const onWeightInputChange = (event) => {
+    const { name, value } = event.target;
+    let errorMessage = "";
+
+    setNewName({
+      ...newName,
+      [name]: value,
+    });
+
+    // Validación después de que ambos campos estén llenos
+    if (name === "pesoMin" && newName.pesoMax !== "") {
+      const minValue = parseFloat(value);
+      const maxValue = parseFloat(newName.pesoMax);
+
+      if (minValue < 1 || maxValue > 200) {
+        errorMessage =
+          "El peso mínimo no puede ser menor a 1 y el peso máximo no puede ser mayor a 200.";
+      } else if (minValue >= maxValue) {
+        errorMessage =
+          "El valor mínimo no puede ser mayor o igual al valor máximo.";
+      }
+    } else if (name === "pesoMax" && newName.pesoMin !== "") {
+      const minValue = parseFloat(newName.pesoMin);
+      const maxValue = parseFloat(value);
+
+      if (minValue < 1 || maxValue > 200) {
+        errorMessage =
+          "El peso mínimo no puede ser menor a 1 y el peso máximo no puede ser mayor a 200.";
+      } else if (minValue >= maxValue) {
+        errorMessage =
+          "El valor mínimo no puede ser mayor o igual al valor máximo.";
+      }
+    }
+
+    setInputError((prevInputError) => ({
+      ...prevInputError,
+      peso: errorMessage,
+    }));
+  };
+
+  const onLifeExpectancyInputChange = (event) => {
+    const { name, value } = event.target;
+    let errorMessage = "";
+
+    setNewName({
+      ...newName,
+      [name]: value,
+    });
+
+    // Validación después de que ambos campos estén llenos
+    if (name === "años_vidaMin" && newName.años_vidaMax !== "") {
+      const minValue = parseFloat(value);
+      const maxValue = parseFloat(newName.años_vidaMax);
+
+      if (minValue < 8 || maxValue > 20) {
+        errorMessage =
+          "Los años de vida mínimos no pueden ser menores a 8 y los años de vida máximos no pueden ser mayores a 20.";
+      } else if (minValue >= maxValue) {
+        errorMessage =
+          "El valor mínimo no puede ser mayor o igual al valor máximo.";
+      }
+    } else if (name === "años_vidaMax" && newName.años_vidaMin !== "") {
+      const minValue = parseFloat(newName.años_vidaMin);
+      const maxValue = parseFloat(value);
+
+      if (minValue < 8 || maxValue > 20) {
+        errorMessage =
+          "Los años de vida mínimos no pueden ser menores a 8 y los años de vida máximos no pueden ser mayores a 20.";
+      } else if (minValue >= maxValue) {
+        errorMessage =
+          "El valor mínimo no puede ser mayor o igual al valor máximo.";
+      }
+    }
+
+    setInputError((prevInputError) => ({
+      ...prevInputError,
+      años_vida: errorMessage,
+    }));
   };
 
   const onTemperamentSelectChange = (event) => {
@@ -109,9 +234,12 @@ const Create = () => {
 
     if (
       !newName.name ||
-      !newName.altura ||
-      !newName.peso ||
-      !newName.años_vida ||
+      !newName.alturaMin ||
+      !newName.alturaMax ||
+      !newName.pesoMin ||
+      !newName.pesoMax ||
+      !newName.años_vidaMin ||
+      !newName.años_vidaMax ||
       newName.temperamento.length === 0
     ) {
       return window.alert("Todos los campos requeridos deben ser completados.");
@@ -124,7 +252,6 @@ const Create = () => {
       console.log("Updated Dogs State:", createdDogs);
 
       navigate("/home");
-      
     } catch (error) {
       console.error("Error al enviar la solicitud:", error.response);
     }
@@ -164,45 +291,106 @@ const Create = () => {
         </label>
         <br />
         <label className="form-label">
-          Altura:
+          Altura (Pulgadas; min:5 - max:45):
           <br />
-          <input
-            name="altura"
-            type="text"
-            className="label-form"
-            onChange={onTextInputChange}
-            value={newName.altura}
-          />
+          <div className="label-container">
+            <br />
+            <label>Minimo: </label>
+            <input
+              name="alturaMin"
+              type="text"
+              className="label-form"
+              onChange={onHeightInputChange}
+              value={newName.alturaMin}
+            />
+            <span className="conversion-message">
+              {newName.alturaMin &&
+                `${newName.alturaMin} pulgadas = ${
+                  newName.alturaMin * 2.54
+                } cm`}
+            </span>
+          </div>
+          <div className="label-container">
+            <label>Maximo: </label>
+            <input
+              name="alturaMax"
+              type="text"
+              className="label-form"
+              onChange={onHeightInputChange}
+              value={newName.alturaMax}
+            />
+            <span className="conversion-message">
+              {newName.alturaMax &&
+                `${newName.alturaMax} pulgadas = ${
+                  newName.alturaMax * 2.54
+                } cm`}
+            </span>
+          </div>
           <div className="errorMessage">
             {inputError.altura && inputError.altura}
           </div>
         </label>
         <br />
         <label className="form-label">
-          Peso:
+          Peso (Libras; min:1 - max:200):
           <br />
-          <input
-            name="peso"
-            type="text"
-            className="label-form"
-            onChange={onTextInputChange}
-            value={newName.peso}
-          />
+          <div className="label-container">
+            <label>Minimo: </label>
+            <input
+              name="pesoMin"
+              type="text"
+              className="label-form"
+              onChange={onWeightInputChange}
+              value={newName.pesoMin}
+            />
+            <span className="conversion-message">
+              {newName.pesoMin &&
+                `${newName.pesoMin} libras = ${newName.pesoMin * 0.453592} kg`}
+            </span>
+          </div>
+          <div className="label-container">
+            <label>Maximo: </label>
+            <input
+              name="pesoMax"
+              type="text"
+              className="label-form"
+              onChange={onWeightInputChange}
+              value={newName.pesoMax}
+            />
+            <span className="conversion-message">
+              {newName.pesoMax &&
+                `${newName.pesoMax} libras = ${newName.pesoMax * 0.453592} kg`}
+            </span>
+          </div>
           <div className="errorMessage">
             {inputError.peso && inputError.peso}
           </div>
         </label>
         <br />
         <label className="form-label">
-          Años de Vida:
+          Años de Vida (min:8 - max:20):
           <br />
-          <input
-            name="años_vida"
-            type="text"
-            className="label-form"
-            onChange={onTextInputChange}
-            value={newName.años_vida}
-          />
+          <div className="label-container">
+            <br />
+            <label>Minimo: </label>
+            <input
+              name="años_vidaMin"
+              type="text"
+              className="label-form"
+              onChange={onLifeExpectancyInputChange}
+              value={newName.años_vidaMin}
+            />
+          </div>
+          <div className="label-container">
+            <label>Maximo: </label>
+            <input
+              name="años_vidaMax"
+              type="text"
+              className="label-form"
+              onChange={onLifeExpectancyInputChange}
+              value={newName.años_vidaMax}
+            />
+          </div>
           <div className="errorMessage">
             {inputError.años_vida && inputError.años_vida}
           </div>

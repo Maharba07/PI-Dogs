@@ -72,6 +72,12 @@
   text-shadow: 2px 2px 4px rgba(207, 4, 248, 0.5);
   margin-top: 0.5rem;
 }
+.conversion-message {
+  visibility: visible;
+  color: rgb(2, 35, 97); 
+  font-size: 20px; 
+  margin-top: 5px;
+}
 .boton-submit {
   position: relative;
   width: 20%;

@@ -16,12 +16,13 @@ function rootReducer(state = initialState, action) {
         allDogs: action.payload,
         dogsCopy: action.payload,
       };
-    case GET_BY_NAME:
-      return {
-        ...state,
-        allDogs: action.payload,
-        dogsCopy: action.payload,
-      };
+      case GET_BY_NAME:
+        console.log("Action GET_BY_NAME dispatched with payload:", action.payload);
+        console.log("Current state:", state);
+        return {
+          ...state,
+          createdDog: [...state.createdDog, ...action.payload],
+        };
     case GET_TEMPERAMENTS:
       return {
         ...state,
