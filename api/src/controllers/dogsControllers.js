@@ -1,5 +1,6 @@
 const axios = require("axios");
 const { Dogs } = require("../db");
+const { Op } = require("sequelize");
 const createDogsDB = async (image, name, altura, peso, años_vida) => {
   const newDogs = await Dogs.create({
     image,
@@ -43,10 +44,20 @@ const getAllDogs = async () => {
 const getDogsByName = async (name) => {
   const infoApi = (await axios.get("https://api.thedogapi.com/v1/breeds/")).data;
   const allDogssApi = cleanDogs(infoApi);
-  const dogssFilter = allDogssApi.filter(dogs => dogs.name === name);
-  const dogsDb = await Dogs.findAll({ where: { name:name } });
 
-  return [...dogssFilter, ...dogsDb];
+  // Filtrar por nombre en la API
+  const dogssFilterApi = allDogssApi.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
+
+  // Consulta en la base de datos utilizando Sequelize
+  const dogsDb = await Dogs.findAll({
+    where: {
+      name: {
+        [Op.iLike]: `%${name}%`, // Buscar nombres que contengan la cadena proporcionada (case-insensitive)
+      },
+    },
+  });
+
+  return [...dogssFilterApi, ...dogsDb];
 };
 
 module.exports = { createDogsDB, getDogsById, getAllDogs, getDogsByName };

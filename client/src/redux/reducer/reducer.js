@@ -28,21 +28,21 @@ function rootReducer(state = initialState, action) {
         ...state,
         temperaments: action.payload,
       };
-    case CREATE_DOG:
-      if (action.payload) {
-        const newDog = action.payload;
-        console.log("New dog added to state:", newDog);
-        return {
-          ...state,
-          allDogs: [...state.allDogs, newDog],
-          createdDog: [...state.createdDog, newDog],
-        };
-      } else {
-        return {
-          ...state,
-          errorMessage: "Error Creating Dog",
-        };
-      }
+      case CREATE_DOG:
+        if (action.payload) {
+          const newDog = action.payload;
+          console.log("New dog added to state:", newDog);
+          return {
+            ...state,
+            allDogs: [...state.allDogs, newDog],
+            createdDog: [...state.createdDog, newDog],
+          };
+        } else {
+          return {
+            ...state,
+            errorMessage: "Error Creating Dog",
+          };
+        }
 
   //     case GET_CREATED:
   // return {
